@@ -1,0 +1,18 @@
+#
+# This file is the build script
+# This works simalair to a bash script though it's better to see every line as a Dockerfile RUN execution
+# 
+# There are a view special things to consider here
+#  - Same as with docker this script expects to run a script at the end
+#    In docker this function is called `CMD` here it's called `FINAL`
+#  - In comparison to docker there RUN command `cd` will work just fine here
+#
+
+# build the files
+cd ..
+echo "a long string"
+ls
+cd ./mini-exec
+
+# run ls at the end because if we would run mini-exec it would loop forever
+FINAL ls
