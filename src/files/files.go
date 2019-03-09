@@ -99,6 +99,7 @@ func ParseConf() (commands.Command, error) {
 
 		commandCount++
 		fmt.Printf("[MINI-EXEC] ---- Step %v Executing %v ----\n", commandCount, exec.Cmd)
+		exec.Prefix = true
 		err = commands.Exec(exec)
 		if err != nil {
 			return commands.Command{}, err

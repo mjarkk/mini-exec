@@ -10,11 +10,12 @@ import (
 
 // Command includes data about what to exec
 type Command struct {
-	Cmd   string
-	Args  []string
-	Dir   string
-	Flags map[string]string
-	Kill  chan struct{}
+	Cmd    string
+	Args   []string
+	Dir    string
+	Flags  map[string]string
+	Kill   chan struct{}
+	Prefix bool
 }
 
 // ExecWithReturnData is mostly the same as Exec, but this one also returns data
@@ -85,6 +86,10 @@ func ExecWithOutput(c Command) (string, error) {
 // Exec run a command
 func Exec(c Command) error {
 	return ExecWithReturnData(c, func(line string) {
-		fmt.Println(line)
+		prefix := ""
+		if c.Prefix {
+			prefix = "[MINI-EXEC] "
+		}
+		fmt.Println(prefix + line)
 	})
 }
