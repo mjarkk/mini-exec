@@ -9,6 +9,3 @@ A small CD for limited environments where there are no open ports
 
 ## Why?
 I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solusion where i did not need 4 servers/vms/containers in total.
-
-## Some other detials:
-- Written in GoLang
