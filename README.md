@@ -57,3 +57,8 @@ This will run all steps in `.miniex` and if it no steps failed it will run the c
 #### 3. Updates
 mini-exec will do a `git pull` every 2 minutes and if there are updates it will re-run the content of the `.miniex` file.  
 When it reaches the `FINAL ...` command without any errors it stops what was running from the last miniex file and start the new command.
+
+## TODOS/BUGS
+- *bug* git craches when it asks for a password/username 
+- *todo* website where it's possible to directly download the executable
+- *todo* no way to manually execute actions via the cli, i'm for now not sure what to do with this.
