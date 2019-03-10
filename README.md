@@ -11,14 +11,17 @@ Mostly made to run in production docker containers as CMD command
 ## Why?
 I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solusion where i did not need 4 servers/vms/containers in total.
 
-## How to use?
+## Install
+```
+wget https://github.com/mjarkk/haproxy-check-api/releases/download/0.1/release.zip
+unzip release.zip
+mv mini-exec /usr/bin/
+```
+
+## Use
 *NOTE: this program is not tested yet in a production envourment*  
 
-#### 1. Get the `mini-exe` binary.
-- Make sure you have installed golang and have a working gopath
-- `go get github.com/mjarkk/mini-exec`
-
-#### 2. Make a build script `.miniex`
+#### 1. Make a build script `.miniex`
 To add a automated build process we need a `.miniex` file.  
 The contents of a `.miniex` file will look simaliar to a bash file,  
 although it will work more like a dockerfile.  
@@ -40,10 +43,10 @@ cd ..
 FINAL ./my-webserver
 ```
 
-#### 3. Run it
+#### 2. Run it
 Run: `$ mini-exec`  
 This will run all steps in `.miniex` and if it no steps failed it will run the command after FINAL
 
-#### 4. Update
-mini-ex will do a `git pull` every 2 minutes and if there are updates it will re-run the content of the `.miniex` file.  
-When it reaches the `FINAL ...` command wihtout any errors it stops what was running from the last miniex file and start the new command.
+#### 3. Updates
+mini-exec will do a `git pull` every 2 minutes and if there are updates it will re-run the content of the `.miniex` file.  
+When it reaches the `FINAL ...` command without any errors it stops what was running from the last miniex file and start the new command.
