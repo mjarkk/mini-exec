@@ -12,10 +12,17 @@ Mostly made to run in production docker containers as CMD command
 I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solusion where i did not need 4 servers/vms/containers in total.
 
 ## Install
+
+#### Latests release
 ```
-wget https://github.com/mjarkk/haproxy-check-api/releases/download/0.1/release.zip
+wget https://github.com/mjarkk/mini-exec/releases/download/v0.1/release.zip
 unzip release.zip
 mv mini-exec /usr/bin/
+```
+
+#### From source
+```
+go get github.com/mjarkk/mini-exec
 ```
 
 ## Use
