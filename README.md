@@ -3,13 +3,13 @@ A small CD for limited environments where there are no open ports
 Mostly made to run in production docker containers as CMD command  
 
 ## Goals of this project:
-1. Beable to run in servers that can't host a webserver (so no fronend and only pulling data)
+1. Be able to run in servers that can't host a web server (so no frontend and only pulling data)
 2. Have a build script
 3. Must perfectly run as underlayer for the main app in a docker container
 4. 1 executable and 1 config file to get this up and working
 
 ## Why?
-I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solusion where i did not need 4 servers/vms/containers in total.
+I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solution where i did not need 4 servers/vms/containers in total.
 
 ## Install
 
@@ -60,6 +60,7 @@ When it reaches the `FINAL ...` command without any errors it stops what was run
 
 ## TODOS/BUGS
 - *todo* the documentation is minimal, a view examples would be great 
+- *bug* no support for `&&`, `||`, `>` and `>>` in the shell
 - *todo* website where it's possible to directly download the executable
 - *todo* no way to manually execute actions via the cli, i'm for now not sure what to do with this.
 - *todo* windows support *(It probebly works on windows but there will be a view bugs like the program will see `cd C:\` as `cd C:\dir\to\project\C:\`)*
