@@ -15,7 +15,7 @@ I got annoyed of the limitations from the servers my programs need to run on and
 
 #### Latests release
 ```
-wget https://github.com/mjarkk/mini-exec/releases/download/v0.1/release.zip
+wget https://github.com/mjarkk/mini-exec/releases/download/v0.1.1/release.zip
 unzip release.zip
 mv mini-exec /usr/bin/
 ```
