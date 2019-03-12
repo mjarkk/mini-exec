@@ -1,26 +1,40 @@
 package app
 
 import (
+	"fmt"
+	"os"
+	"os/exec"
 	"strings"
 
-	"github.com/mjarkk/mini-exec/src/commands"
+	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
 
 // GitPull runs a git pull on the project
 func GitPull() bool {
-	out, err := commands.ExecWithOutput(commands.Command{
-		Cmd:  "git",
-		Args: []string{"pull"},
-		Flags: map[string]string{
-			"LANG":   "en_US.UTF-8",
-			"LC_ALL": "en_US.UTF-8",
-		},
+	cmd := exec.Command("git", "pull")
+	dir, err := os.Getwd()
+	if err != nil {
+		fmt.Println("[MINI-EXEC] can't get the current dir")
+		return false
+	}
+	cmd.Dir = dir
+
+	out, err := gitcredentialhelper.Run(cmd, func(question string) string {
+		if question == "password" {
+			return os.Getenv("MINI_EXEC_PASSWORD")
+		}
+		return os.Getenv("MINI_EXEC_USERNAME")
 	})
+
+	fmt.Println(string(out), err)
+
 	if err != nil {
 		return false
 	}
-	if strings.Contains(out, "Already up to date") {
+
+	if strings.Contains(string(out), "Already up to date") {
 		return false
 	}
+
 	return true
 }

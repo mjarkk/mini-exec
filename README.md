@@ -59,7 +59,7 @@ mini-exec will do a `git pull` every 2 minutes and if there are updates it will 
 When it reaches the `FINAL ...` command without any errors it stops what was running from the last miniex file and start the new command.
 
 ## TODOS/BUGS
-- *bug* git craches when it asks for a password/username 
+- *todo* the documentation is minimal, a view examples would be great 
 - *todo* website where it's possible to directly download the executable
 - *todo* no way to manually execute actions via the cli, i'm for now not sure what to do with this.
 - *todo* windows support *(It probebly works on windows but there will be a view bugs like the program will see `cd C:\` as `cd C:\dir\to\project\C:\`)*

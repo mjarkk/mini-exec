@@ -73,8 +73,10 @@ func Init() error {
 			time.Sleep(time.Minute * 1)
 			status := GitPull()
 			if !status {
+				fmt.Println("[MINI-EXEC] git pull: No update")
 				continue
 			}
+			fmt.Println("[MINI-EXEC] git pull: Got update")
 
 			if isbuilding {
 				newUpdate = true

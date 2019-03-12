@@ -6,9 +6,13 @@ import (
 
 	"github.com/mjarkk/mini-exec/src/app"
 	"github.com/mjarkk/mini-exec/src/checks"
+
+	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
 
 func main() {
+	gitcredentialhelper.SetupClient()
+
 	err := checks.Init()
 	if err != nil {
 		fmt.Println(err)
