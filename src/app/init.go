@@ -70,11 +70,13 @@ func Init() error {
 	}()
 	go func() {
 		for {
-			time.Sleep(time.Minute * 1)
+			time.Sleep(time.Minute * 2)
 			status := GitPull()
 			if !status {
+				fmt.Println("[MINI-EXEC] git pull: No update")
 				continue
 			}
+			fmt.Println("[MINI-EXEC] git pull: Got update")
 
 			if isbuilding {
 				newUpdate = true

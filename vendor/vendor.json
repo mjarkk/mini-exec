@@ -1,6 +1,19 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "cNotAOV00xYRkPtvja9kzOjdweA=",
+			"path": "github.com/mjarkk/go-git-http-credentials-helper",
+			"revision": "f8b16c1acc38d5379b145d0d85c3e8fc00a77594",
+			"revisionTime": "2019-03-12T11:53:48Z"
+		},
+		{
+			"checksumSHA1": "aI7IxelpoLv3LPkL3BtCCX3S9Xg=",
+			"path": "github.com/mjarkk/go-ps",
+			"revision": "4da635de6d977abaa3b9b194553cbf6d08e8b823",
+			"revisionTime": "2019-02-23T15:27:57Z"
+		}
+	],
 	"rootPath": "github.com/mjarkk/mini-exec"
 }
