@@ -26,8 +26,6 @@ func GitPull() bool {
 		return os.Getenv("MINI_EXEC_USERNAME")
 	})
 
-	fmt.Println(string(out), err)
-
 	if err != nil {
 		return false
 	}
