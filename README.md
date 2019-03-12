@@ -3,13 +3,13 @@ A small CD for limited environments where there are no open ports
 Mostly made to run in production docker containers as CMD command  
 
 ## Goals of this project:
-1. Beable to run in servers that can't host a webserver (so no fronend and only pulling data)
+1. Be able to run in servers that can't host a web server (so no frontend and only pulling data)
 2. Have a build script
 3. Must perfectly run as underlayer for the main app in a docker container
 4. 1 executable and 1 config file to get this up and working
 
 ## Why?
-I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solusion where i did not need 4 servers/vms/containers in total.
+I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solution where i did not need 4 servers/vms/containers in total.
 
 ## Install
 
@@ -59,6 +59,7 @@ mini-exec will do a `git pull` every 2 minutes and if there are updates it will 
 When it reaches the `FINAL ...` command without any errors it stops what was running from the last miniex file and start the new command.
 
 ## TODOS/BUGS
+- *bug* no support for `&&`, `||`, `>` and `>>` in the shell
 - *bug* git craches when it asks for a password/username 
 - *todo* website where it's possible to directly download the executable
 - *todo* no way to manually execute actions via the cli, i'm for now not sure what to do with this.
