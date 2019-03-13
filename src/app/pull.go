@@ -22,10 +22,14 @@ func GitPull() bool {
 	cmd.Dir = dir
 
 	out, err := gitcredentialhelper.Run(cmd, func(question string) string {
+		toReturn := os.Getenv("MINI_EXEC_USERNAME")
 		if question == "password" {
-			return os.Getenv("MINI_EXEC_PASSWORD")
+			toReturn = os.Getenv("MINI_EXEC_PASSWORD")
 		}
-		return os.Getenv("MINI_EXEC_USERNAME")
+		if *flags.Verbose {
+			fmt.Println("[MINI-EXEC] Git asked for:", question, ", responded with:", toReturn)
+		}
+		return toReturn
 	})
 
 	if *flags.Verbose {
