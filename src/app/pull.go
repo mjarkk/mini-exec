@@ -29,7 +29,7 @@ func GitPull() bool {
 	})
 
 	if *flags.Verbose {
-		if out != nil {
+		if out == nil {
 			fmt.Println("[MINI-EXEC] Git pull exited with error code:", err.Error())
 		} else {
 			fmt.Println("[MINI-EXEC] Git pull out:\n", string(out))
