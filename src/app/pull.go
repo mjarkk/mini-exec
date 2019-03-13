@@ -6,6 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
+	"github.com/mjarkk/mini-exec/src/flags"
+
 	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
 
@@ -25,6 +27,14 @@ func GitPull() bool {
 		}
 		return os.Getenv("MINI_EXEC_USERNAME")
 	})
+
+	if *flags.Verbose {
+		if out != nil {
+			fmt.Println("[MINI-EXEC] Git pull exited with error code:", err.Error())
+		} else {
+			fmt.Println("[MINI-EXEC] Git pull out:\n", string(out))
+		}
+	}
 
 	if err != nil {
 		return false
