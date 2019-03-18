@@ -2,11 +2,11 @@
 A small CD for limited environments where there are no open ports  
 Mostly made to run in production docker containers as CMD command  
 
-## Goals of this project:
-1. Be able to run in servers that can't host a web server (so no frontend and only pulling data)
-2. Have a build script
-3. Must perfectly run as underlayer for the main app in a docker container
-4. 1 executable and 1 config file to get this up and working
+## Features:
+1. **Run without webserver** - Be able to run this in servers that have strict rules and can't have exposed ports
+2. **Build script** - a nice build script where the steps to run the project are in defined
+3. **Docker support** - Runs perfectly as underlayer for a server in a docker container
+4. **1 executable and 1 config** - That's all to get this up and running
 
 ## Why?
 I got annoyed of the limitations from the servers my programs need to run on and wanted a not complicated solution where i did not need 4 servers/vms/containers in total.
@@ -26,7 +26,6 @@ go get github.com/mjarkk/mini-exec
 ```
 
 ## Use
-*NOTE: this program is not tested yet in a production envourment*  
 
 #### 1. Make a build script `.miniex`
 To add a automated build process we need a `.miniex` file.  
