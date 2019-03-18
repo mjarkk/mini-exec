@@ -3,7 +3,7 @@ A small CD for limited environments where there are no open ports
 Mostly made to run in production docker containers as CMD command  
 
 ## Features:
-1. **Run without webserver** - Be able to run this in servers that have strict rules and can't have exposed ports
+1. **Run without webserver** - Can run in servers that have strict rules and can't have exposed ports
 2. **Build script** - a nice build script where the steps to run the project are in defined
 3. **Docker support** - Runs perfectly as underlayer for a server in a docker container
 4. **1 executable and 1 config** - That's all to get this up and running
