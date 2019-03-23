@@ -60,6 +60,6 @@ When it reaches the `FINAL ...` command without any errors it stops what was run
 ## TODOS/BUGS
 - *todo* the documentation is minimal, a view examples would be great 
 - *bug* no support for `&&`, `||`, `>` and `>>` in the shell
-- *todo* website where it's possible to directly download the executable
+- [*todo* website where it's possible to directly download the executable](https://github.com/mjarkk/mini-exec/pull/4)
 - *todo* no way to manually execute actions via the cli, i'm for now not sure what to do with this.
 - *todo* windows support *(It probebly works on windows but there will be a view bugs like the program will see `cd C:\` as `cd C:\dir\to\project\C:\`)*
