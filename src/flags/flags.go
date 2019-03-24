@@ -13,3 +13,9 @@ var AutoPull = flag.Bool("a", false, "git pull every view minutes to check if th
 
 // GitPullTimeout is the timeout between git pulls in minutes
 var GitPullTimeout = flag.Uint("t", 2, "Time between git pull's in minutes")
+
+// ServerLocation is the location of the webserver default: 0.0.0.0:3030
+var ServerLocation = flag.String("s", ":3030", "the location of the webserver")
+
+// NoServer = false means web gui
+var NoServer = flag.Bool("n", false, "Disable the web gui")

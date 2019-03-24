@@ -1,3 +1,5 @@
+//go:generate go run js/extract.go
+
 package main
 
 import (
@@ -8,11 +10,14 @@ import (
 	"github.com/mjarkk/mini-exec/src/app"
 	"github.com/mjarkk/mini-exec/src/checks"
 	"github.com/mjarkk/mini-exec/src/flags"
+	"github.com/mjarkk/mini-exec/src/server"
 
 	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
 
 func main() {
+	server.Start()
+
 	flag.Parse()
 
 	gitcredentialhelper.SetupClient()

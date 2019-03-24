@@ -11,5 +11,13 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# Added extra
+
+# Go related files
 mini-exec*
 release.zip
+
+# Javascript files
+js/.cache
+js/dist/main.*
+js/node_modules
