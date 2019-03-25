@@ -1,12 +1,12 @@
 package app
 
 import (
-	"fmt"
 	"os"
 	"os/exec"
 	"strings"
 
 	"github.com/mjarkk/mini-exec/src/flags"
+	"github.com/mjarkk/mini-exec/src/utils"
 
 	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
@@ -16,7 +16,7 @@ func GitPull() bool {
 	cmd := exec.Command("git", "pull")
 	dir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("[MINI-EXEC] can't get the current dir")
+		utils.Println("can't get the current dir")
 		return false
 	}
 	cmd.Dir = dir
@@ -27,16 +27,16 @@ func GitPull() bool {
 			toReturn = os.Getenv("MINI_EXEC_PASSWORD")
 		}
 		if *flags.Verbose {
-			fmt.Println("[MINI-EXEC] Git asked for:", question, ", responded with:", toReturn)
+			utils.Println("Git asked for:", question, ", responded with:", toReturn)
 		}
 		return toReturn
 	})
 
 	if *flags.Verbose {
 		if out == nil {
-			fmt.Println("[MINI-EXEC] Git pull exited with error code:", err.Error())
+			utils.Println("Git pull exited with error code:", err.Error())
 		} else {
-			fmt.Println("[MINI-EXEC] Git pull out:\n", string(out))
+			utils.Println("Git pull out:\n", string(out))
 		}
 	}
 

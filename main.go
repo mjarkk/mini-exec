@@ -11,14 +11,17 @@ import (
 	"github.com/mjarkk/mini-exec/src/checks"
 	"github.com/mjarkk/mini-exec/src/flags"
 	"github.com/mjarkk/mini-exec/src/server"
+	"github.com/mjarkk/mini-exec/src/utils"
 
 	gitcredentialhelper "github.com/mjarkk/go-git-http-credentials-helper"
 )
 
 func main() {
-	server.Start()
-
 	flag.Parse()
+
+	if !*flags.NoServer {
+		go server.Start()
+	}
 
 	gitcredentialhelper.SetupClient()
 
@@ -35,6 +38,6 @@ func main() {
 
 	err = app.Init()
 	if err != nil {
-		fmt.Println("[MINI-EXEC] CRITICAL ERROR:", err.Error())
+		utils.Println("CRITICAL ERROR:", err.Error())
 	}
 }

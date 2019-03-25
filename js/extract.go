@@ -65,8 +65,8 @@ func main() {
 	}
 
 	tmpl := fileToRead["tmpl"][1]
-	css := fileToRead["css"][1]
-	js := fileToRead["js"][1]
+	css := strings.Replace(fileToRead["css"][1], "`", "`+\"`\"+`", -1) // the replace function escapes the ` characters
+	js := strings.Replace(fileToRead["js"][1], "`", "`+\"`\"+`", -1)
 
 	tmpl = strings.Replace(tmpl, "{{ CSS }}", css, 1)
 	tmpl = strings.Replace(tmpl, "{{ JS }}", js, 1)

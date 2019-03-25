@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/mjarkk/mini-exec/src/flags"
+	"github.com/mjarkk/mini-exec/src/utils"
 )
 
 // sendErr returns true if there is an error
@@ -15,7 +16,6 @@ func sendErr(c *gin.Context, err error, errorOverWrite ...string) bool {
 	if err == nil {
 		return false
 	}
-	fmt.Println("[ERROR]:", err.Error())
 	errorToSend := err.Error()
 	if len(errorOverWrite) > 0 {
 		errorToSend = errorOverWrite[0]
@@ -28,14 +28,26 @@ func sendErr(c *gin.Context, err error, errorOverWrite ...string) bool {
 }
 
 // Start starts the webserver
-func Start() {
+func Start() error {
+	key, err := randomString(15)
+	if err != nil {
+		return err
+	}
+
+	Key = key
+	Validation = key
+
+	utils.Println("Login key:", key)
+
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
 	r.GET("/", template)
 	r.POST("/", handeler)
 
-	r.Run(*flags.ServerLocation)
+	serverAddr := *flags.ServerLocation
+	utils.Printf("running server on: \"%v\"\n", serverAddr)
+	return r.Run(serverAddr)
 }
 
 func template(c *gin.Context) {

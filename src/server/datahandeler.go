@@ -5,13 +5,13 @@ import (
 )
 
 func handeler(c *gin.Context) {
-	var data PostData
-	err := c.BindJSON(data)
+	var fullPostData PostData
+	err := c.BindJSON(&fullPostData)
 	if sendErr(c, err) {
 		return
 	}
 
-	switch data.What {
+	switch fullPostData.What {
 	case "init":
 		// Try to login
 
@@ -27,12 +27,23 @@ func handeler(c *gin.Context) {
 		if sendErr(c, err, "Failed to generate validation key") {
 			return
 		}
+
 		c.JSON(200, gin.H{
 			"status": true,
 		})
+
 	case "genToken":
 		// logs the app key to stdout if the validation key matches
-		err = GenerateKey()
+		var data GenToken
+		err = DataTo(fullPostData, &data)
+		if sendErr(c, err) {
+			return
+		}
+
+		err = GenerateKey(data.ValidationKey)
+		if sendErr(c, err) {
+			return
+		}
 
 		c.JSON(200, gin.H{
 			"status": true,

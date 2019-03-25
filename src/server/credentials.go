@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"math/big"
 	mathRand "math/rand"
+
+	"github.com/mjarkk/mini-exec/src/utils"
 )
 
 // Key is the access key to the server
@@ -40,7 +42,7 @@ func GenerateKey(validation string) error {
 
 	Key = key
 
-	fmt.Println("New key:", key)
+	utils.Println("New login key:", key)
 	return nil
 }
 
