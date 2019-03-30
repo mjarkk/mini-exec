@@ -14,12 +14,21 @@ func handeler(c *gin.Context) {
 	switch fullPostData.What {
 	case "init":
 		// Try to login
-
+		if fullPostData.LoggedIn(c) {
+			return
+		}
+		sendState(c)
 	case "update":
 		// User pressed the update button
+		if fullPostData.LoggedIn(c) {
+			return
+		}
 
-	case "check":
-		// Check for new data
+	// case "check":
+	// 	// Check for new data
+	// 	if fullPostData.LoggedIn(c) {
+	// 		return
+	// 	}
 
 	case "reqToken":
 		// Reqtoken generates a validation key and logs it in stdout
@@ -55,4 +64,18 @@ func handeler(c *gin.Context) {
 			"err":    "Not a valid / not found: \"What\"",
 		})
 	}
+}
+
+// LoggedIn returns false
+func (d *PostData) LoggedIn(c *gin.Context) bool {
+	if d.Key != Key {
+		return false
+	}
+
+	c.JSON(400, gin.H{
+		"status": false,
+		"err":    "Key wrong",
+	})
+
+	return true
 }

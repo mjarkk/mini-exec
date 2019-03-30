@@ -19,17 +19,16 @@ import (
 func main() {
 	flag.Parse()
 
-	if !*flags.NoServer {
-		go server.Start()
-	}
-
 	gitcredentialhelper.SetupClient()
 
 	err := checks.Init()
-
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
+	}
+
+	if !*flags.NoServer {
+		go server.Start()
 	}
 
 	if *flags.OnlyCheck {
