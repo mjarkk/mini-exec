@@ -1,10 +1,10 @@
 package app
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/mjarkk/mini-exec/src/commands"
+	"github.com/mjarkk/mini-exec/src/utils"
 
 	"github.com/mjarkk/mini-exec/src/files"
 )
@@ -25,7 +25,7 @@ func Init() error {
 			isbuilding = true
 			toExec, err := files.ParseConf()
 			if err != nil {
-				fmt.Printf("[MINI-EXEC] BUILD STOPPED WITH ERROR:\n%v\n", err)
+				utils.Printf("BUILD STOPPED WITH ERROR:\n%v\n", err)
 			} else {
 				reRunFinal <- toExec
 			}
@@ -51,20 +51,20 @@ func Init() error {
 			}
 		}()
 		for {
-			fmt.Println("[MINI-EXEC] ---- Run FINAL command ----")
+			utils.Println("---- Run FINAL command ----")
 			toExec.Kill = kill
 			err := commands.Exec(toExec)
 
 			if !isKilled {
 				if err != nil {
-					fmt.Println("[MINI-EXEC] FINAL COMMAND EXITED WITH CODE: ", err)
+					utils.Println("FINAL COMMAND EXITED WITH CODE: ", err)
 				} else {
-					fmt.Println("[MINI-EXEC] FINAL COMMAND EXITED WITHOUT ANY ERRORS")
+					utils.Println("FINAL COMMAND EXITED WITHOUT ANY ERRORS")
 				}
 				<-kill
 			} else {
 				isKilled = false
-				fmt.Println("[MINI-EXEC] program killed, going to next release")
+				utils.Println("program killed, going to next release")
 			}
 		}
 	}()
@@ -73,10 +73,10 @@ func Init() error {
 			time.Sleep(time.Minute * 2)
 			status := GitPull()
 			if !status {
-				fmt.Println("[MINI-EXEC] git pull: No update")
+				utils.Println("git pull: No update")
 				continue
 			}
-			fmt.Println("[MINI-EXEC] git pull: Got update")
+			utils.Println("git pull: Got update")
 
 			if isbuilding {
 				newUpdate = true

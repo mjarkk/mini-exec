@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"github.com/mjarkk/mini-exec/src/commands"
+	"github.com/mjarkk/mini-exec/src/utils"
 )
 
 // ParseConf parses the .miniex file and runs the contents
@@ -75,7 +76,7 @@ func ParseConf() (commands.Command, error) {
 			}
 
 			commandCount++
-			fmt.Printf("[MINI-EXEC] ---- Step %v Executing cd ----\n", commandCount)
+			utils.Printf("---- Step %v Executing cd ----\n", commandCount)
 
 			cdTo := path.Clean(args[0])
 			if strings.HasPrefix(cdTo, "/") || strings.HasPrefix(cdTo, "\\") {
@@ -98,7 +99,7 @@ func ParseConf() (commands.Command, error) {
 		}
 
 		commandCount++
-		fmt.Printf("[MINI-EXEC] ---- Step %v Executing %v ----\n", commandCount, exec.Cmd)
+		utils.Printf("---- Step %v Executing %v ----\n", commandCount, exec.Cmd)
 		exec.Prefix = true
 		err = commands.Exec(exec)
 		if err != nil {

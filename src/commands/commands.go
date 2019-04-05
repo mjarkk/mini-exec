@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+
+	"github.com/mjarkk/mini-exec/src/utils"
 )
 
 // Command includes data about what to exec
@@ -86,10 +88,10 @@ func ExecWithOutput(c Command) (string, error) {
 // Exec run a command
 func Exec(c Command) error {
 	return ExecWithReturnData(c, func(line string) {
-		prefix := ""
 		if c.Prefix {
-			prefix = "[MINI-EXEC] "
+			utils.Println(line)
+		} else {
+			fmt.Println(line)
 		}
-		fmt.Println(prefix + line)
 	})
 }
